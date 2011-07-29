@@ -1,0 +1,13 @@
+snippet zdb
+	Zend_Debug::dump($${1:variable});${2}
+snippet zdd
+	Zend_Debug::dump($${1:variable}); die;${2}
+snippet who
+	Zend_Debug::dump(get_class($${1:this}));${2}
+snippet refm
+	$ref = new ReflectionMethod($${1:this}, '${2:methodName}');
+	Zend_Debug::dump($ref->getFileName());${3}
+snippet model
+	Mage::getModel('${1:module/path}')${2};${3}
+snippet helper
+	Mage::helper('${1:module/path}')${2};${3}
