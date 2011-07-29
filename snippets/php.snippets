@@ -11,3 +11,18 @@ snippet model
 	Mage::getModel('${1:module/path}')${2};${3}
 snippet helper
 	Mage::helper('${1:module/path}')${2};${3}
+snippet resource
+	Mage::getResourceModel('${1:module_mysql4/path}')${2};${3}
+# PHPUnit
+snippet ae
+	$this->assertEquals(${1:'value'}, $${2:variable});${3}
+snippet an
+	$this->assertNull($${1:variable});${2}
+snippet af
+	$this->assertFalse($${1:variable});${2}
+snippet at
+	$this->assertTrue($${1:variable});${2}
+snippet ahk
+	$this->assertArrayHasKey(${1:'key'}, $${2:array});${3}
+snippet ai
+	$this->assertInstanceOf(${1:'Class_Name'}, $${2:object});${3}
