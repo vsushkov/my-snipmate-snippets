@@ -9,6 +9,8 @@ snippet refm
 	Zend_Debug::dump($ref->getFileName());${3}
 snippet model
 	Mage::getModel('${1:module/path}')${2};${3}
+snippet single
+	Mage::getSingleton('${1:module/path}')${2};${3}
 snippet helper
 	Mage::helper('${1:module/path}')${2};${3}
 snippet resource
@@ -17,6 +19,8 @@ snippet child
 	<?php echo $this->getChildHtml('${1:name}') ?>${2}
 snippet btr
 	mageDebugBacktrace();
+snippet acl
+	Mage::getSingleton('admin/session')->isAllowed('${1:acl/path}');${2}
 # PHPUnit
 snippet ae
 	$this->assertEquals(${1:'value'}, $${2:variable});${3}
@@ -27,6 +31,6 @@ snippet af
 snippet at
 	$this->assertTrue($${1:variable});${2}
 snippet ahk
-	$this->assertArrayHasKey(${1:'key'}, $${2:array});${3}
+	$this->assertArrayHasKey('${1:key}', $${2:array});${3}
 snippet ai
-	$this->assertInstanceOf(${1:'Class_Name'}, $${2:object});${3}
+	$this->assertInstanceOf('${1:Class_Name}', $${2:object});${3}
