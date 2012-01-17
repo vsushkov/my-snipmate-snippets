@@ -1,12 +1,12 @@
 snippet zdb
-	Zend_Debug::dump($${1:variable});${2}
+	Zend_Debug::dump($${1:variable}, __METHOD__ . '(' . __LINE__ . ')');${2}
 snippet zdd
-	Zend_Debug::dump($${1:variable}); die;${2}
+	Zend_Debug::dump($${1:variable}, __METHOD__ . '(' . __LINE__ . ')'); die;${2}
 snippet who
 	Zend_Debug::dump(get_class($${1:this}));${2}
 snippet refm
 	$ref = new ReflectionMethod($${1:this}, '${2:methodName}');
-	Zend_Debug::dump($ref->getFileName());${3}
+	Zend_Debug::dump($ref->getFileName(), __METHOD__ . '(' . __LINE__ . ')');${3}
 snippet model
 	Mage::getModel('${1:module/path}')${2};${3}
 snippet single
@@ -15,22 +15,45 @@ snippet helper
 	Mage::helper('${1:module/path}')${2};${3}
 snippet resource
 	Mage::getResourceModel('${1:module_mysql4/path}')${2};${3}
+snippet block
+	Mage::app()->getLayout()->createBlock('${1:core/template}')${2};${3}
 snippet child
 	<?php echo $this->getChildHtml('${1:name}') ?>${2}
-snippet btr
+snippet mdb
 	mageDebugBacktrace();
 snippet acl
 	Mage::getSingleton('admin/session')->isAllowed('${1:acl/path}');${2}
+snippet tril
+	<?php echo $this->__('${1:Something}') ?>
+snippet log
+	Mage::log($${1:data}, Zend_Log::DEBUG, '${2:filename}.log');${3}
 # PHPUnit
 snippet ae
 	$this->assertEquals(${1:'value'}, $${2:variable});${3}
 snippet an
 	$this->assertNull($${1:variable});${2}
+snippet ann
+	$this->assertNotNull($${1:variable});${2}
 snippet af
 	$this->assertFalse($${1:variable});${2}
 snippet at
 	$this->assertTrue($${1:variable});${2}
 snippet ahk
 	$this->assertArrayHasKey('${1:key}', $${2:array});${3}
+snippet anhk
+	$this->assertArrayNotHasKey('${1:key}', $${2:array});${3}
 snippet ai
 	$this->assertInstanceOf('${1:Class_Name}', $${2:object});${3}
+snippet lf
+	@loadFixture
+snippet skip
+	$this->markTestSkipped();
+snippet incomplete
+	$this->markTestIncomplete();
+snippet test
+	public function test${1:Something}()
+	{
+		${2:$this->markTestIncomplete();}${3}
+	}
+snippet exp
+	$this->expected()->getData()
