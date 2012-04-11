@@ -29,6 +29,37 @@ snippet tril
 	<?php echo $this->__('${1:Something}') ?>
 snippet log
 	Mage::log($${1:data}, Zend_Log::DEBUG, '${2:filename}.log');${3}
+snippet file
+	/**
+	 * Oggetto Web extension for Magento
+	 *
+	 * NOTICE OF LICENSE
+	 *
+	 * This source file is subject to the Academic Free License (AFL 3.0)
+	 * that is bundled with this package in the file LICENSE_AFL.txt.
+	 * It is also available through the world-wide-web at this URL:
+	 * http://opensource.org/licenses/afl-3.0.php
+	 *
+	 * DISCLAIMER
+	 *
+	 * Do not edit or add to this file if you wish to upgrade this module to newer
+	 * versions in the future. If you wish to customize this module for your
+	 * needs please refer to http://www.magentocommerce.com for more information.
+	 *
+	 * @category   Oggetto
+	 * @package    Oggetto_${1:Module}
+	 * @copyright  Copyright (c) 2012 Oggetto Web ltd. (http://www.oggettoweb.com/)
+	 * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+	 */
+	 ${2}
+snippet doc_c
+	/**
+	 * ${1:Class comment}
+	 *
+	 * @category   Oggetto
+	 * @package    Oggetto_${2:Module}
+	 * @author     Valentin Sushkov <vsushkov@oggettoweb.com>
+	 */${3}
 # PHPUnit
 snippet ae
 	$this->assertEquals(${1:'value'}, $${2:variable});${3}
@@ -59,37 +90,27 @@ snippet test
 	}
 snippet exp
 	$this->expected()->getData()
-snippet file
-	/**
-	 * Oggetto Web extension for Magento
-	 *
-	 * NOTICE OF LICENSE
-	 *
-	 * This source file is subject to the Academic Free License (AFL 3.0)
-	 * that is bundled with this package in the file LICENSE_AFL.txt.
-	 * It is also available through the world-wide-web at this URL:
-	 * http://opensource.org/licenses/afl-3.0.php
-	 *
-	 * DISCLAIMER
-	 *
-	 * Do not edit or add to this file if you wish to upgrade this module to newer
-	 * versions in the future. If you wish to customize this module for your
-	 * needs please refer to http://www.magentocommerce.com for more information.
-	 *
-	 * @category   Oggetto
-	 * @package    Oggetto_${1:Module}
-	 * @copyright  Copyright (c) 2012 Oggetto Web ltd. (http://www.oggettoweb.com/)
-	 * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
-	 * @author     Valentin Sushkov <vsushkov@oggettoweb.com>
-	 */
-	 ${2}
-snippet doc_c
-	/**
-	 * ${1:Class comment}
-	 *
-	 * @category   Oggetto
-	 * @package    Oggetto_${2:Module}
-	 * @author     Valentin Sushkov <vsushkov@oggettoweb.com>
-	 */${3}
 snippet ec
 	EcomDev_PHPUnit_Test_Case
+snippet acnhc
+	$this->assertConfigNodeHasChild('${1:path}', '${2:childName}');
+snippet mmock
+	$this->getModelMock('${1:path}', array('${2:method}'${3}));
+snippet rmock
+	$this->getResourceModelMock('${1:path}', array('${2:method}'${3}));
+snippet bmock
+	$this->getBlockMock('${1:path}', array('${2:method}'${3}));
+snippet hmock
+	$this->getHelperMock('${1:path}', array('${2:method}'${3}));
+snippet exp
+	expects($this->${1:once}())->method('${2:metod}')${3}
+snippet expw
+	expects($this->${1:once}())->method('${2:metod}')->with($this->${3:equalTo}(${4:value}));
+snippet expr
+	expects($this->${1:once}())->method('${2:metod}')->will($this->returnValue(${3:value}));
+snippet expwr
+	expects($this->${1:once}())->method('${2:metod}')
+	    ->with($this->${3:equalTo}(${4:value}))
+	    ->will($this->returnValue(${5:value}));
+snippet rbm
+	$this->replaceByMock('${1:model}', '${2:path}', $${3:var});
