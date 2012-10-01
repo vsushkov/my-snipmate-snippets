@@ -60,6 +60,9 @@ snippet doc_c
 	 * @package    Oggetto_${2:Module}
 	 * @author     Valentin Sushkov <vsushkov@oggettoweb.com>
 	 */${3}
+# Canonical class name for Magento
+snippet	mclass
+	`substitute(substitute(expand("%:r"), 'app/code/local/', '', 'g'), '/', '_', 'g')`
 # PHPUnit
 snippet ae
 	$this->assertEquals(${1:'value'}, $${2:variable});${3}
