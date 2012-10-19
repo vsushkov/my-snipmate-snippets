@@ -156,3 +156,24 @@ snippet expwr
 	    ->will($this->returnValue(${5:value}));
 snippet rbm
 	$this->replaceByMock('${1:model}', '${2:path}', $${3:var});
+snippet set
+	protected function setUp()
+	{
+		${1}
+	}
+snippet tear
+	protected function tearDown()
+	{
+		${1}
+	}
+snippet sbc
+	public static function setUpBeforeClass()
+	{
+		${1}
+	}
+snippet tdac
+	public static function tearDownAfterClass()
+	{
+		${1}
+	}
+
