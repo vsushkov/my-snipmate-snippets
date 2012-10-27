@@ -59,7 +59,7 @@ snippet file
 	 * @copyright  Copyright (c) 2012 Oggetto Web ltd. (http://www.oggettoweb.com/)
 	 * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 	 */
-	 ${2}
+	${2}
 snippet vfile
 	/**
 	 * vsushkov's extension for Magento
@@ -90,7 +90,8 @@ snippet doc_c
 	 * @category   Oggetto
 	 * @package    Oggetto_${2:Module}
 	 * @author     Valentin Sushkov <vsushkov@oggettoweb.com>
-	 */${3}
+	 */
+	${3}
 snippet vdoc_c
 	/**
 	 * ${1:Class comment}
@@ -98,7 +99,8 @@ snippet vdoc_c
 	 * @category   Vsushkov
 	 * @package    Vsushkov_${2:Module}
 	 * @author     Valentin Sushkov <me@vsushkov.com>
-	 */${3}
+	 */
+	${3}
 # Canonical class name for Magento
 snippet	mclass
 	`substitute(substitute(expand("%:r"), 'app/code/local/', '', 'g'), '/', '_', 'g')`
@@ -121,6 +123,10 @@ snippet ai
 	$this->assertInstanceOf('${1:Class_Name}', $${2:object});${3}
 snippet lf
 	@loadFixture
+	@doNotIndexAll
+snippet lsf
+	@loadSharedFixture
+	@doNotIndexAll
 snippet skip
 	$this->markTestSkipped();
 snippet incomplete
@@ -177,3 +183,5 @@ snippet tdac
 		${1}
 	}
 
+snippet here
+	echo 'Hi, I am ' . __METHOD__ . '(' . __LINE__ . ')'; echo '<br />';
