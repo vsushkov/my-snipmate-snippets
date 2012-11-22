@@ -190,3 +190,13 @@ snippet observe
 	{
 
 	}
+snippet adminaction
+	public function ${1:some}Action()
+	{
+		try {
+			${2}
+		} catch (Exception $e) {
+			$this->_getSession()->addError($e->getMessage());
+		}
+		$this->_redirectReferer();
+	}
