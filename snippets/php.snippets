@@ -123,7 +123,7 @@ snippet ai
 	$this->assertInstanceOf('${1:Class_Name}', $${2:object});${3}
 snippet lf
 	@loadFixture
-	* @doNotIndexAll
+	@doNotIndexAll
 snippet lsf
 	@loadSharedFixture
 	* @doNotIndexAll
@@ -184,19 +184,16 @@ snippet tdac
 	}
 
 snippet here
-	echo 'Hi, I am ' . __METHOD__ . '(' . __LINE__ . ')'; echo '<br />';
-snippet observe
-	public function ${1:methodName}(Varien_Event_Observer $observer)
-	{
+	echo 'Hi, I am ' . __FILE__ . '(' . __LINE__ . ')'; echo '<br />';
+snippet install
+	$installer = $this;
+	$installer->startSetup();
 
+	try {
+		${1}
+	} catch (Exception $e) {
+		Mage::logException($e);
 	}
-snippet adminaction
-	public function ${1:some}Action()
-	{
-		try {
-			${2}
-		} catch (Exception $e) {
-			$this->_getSession()->addError($e->getMessage());
-		}
-		$this->_redirectReferer();
-	}
+
+	$installer->endSetup();
+
