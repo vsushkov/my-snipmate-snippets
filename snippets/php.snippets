@@ -70,7 +70,7 @@ snippet doc_c
 	${3}
 # Canonical class name for Magento
 snippet	mclass
-	`substitute(substitute(expand("%:r"), 'app/code/local/', '', 'g'), '/', '_', 'g')`
+	`substitute(substitute(expand("%:r"), 'app/code/local/\|app/code/community/', '', 'g'), '/', '_', 'g')`
 # PHPUnit
 snippet ae
 	$this->assertEquals(${1:'value'}, $${2:variable});${3}
