@@ -53,8 +53,8 @@ snippet file
 	 * versions in the future. If you wish to customize this module for your
 	 * needs please refer to http://www.magentocommerce.com for more information.
 	 *
-	 * @category   Vsushkov
-	 * @package    Vsushkov_${1:Module}
+	 * @category   `substitute(substitute(expand("%:r"), 'app/code/local/\|app/code/community/', '', 'g'), '/.*', '', 'g')`
+	 * @package    `substitute(expand("%:r"), 'app/code/\(community\|local\)/\(\w*\)/\(\w*\)/.*', '\=submatch(2) . "_" . submatch(3)', 'g')`
 	 * @copyright  Copyright (c) `strftime('%Y')` Valentin Sushkov (http://www.vsushkov.com/)
 	 * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 	 */
@@ -63,11 +63,11 @@ snippet doc_c
 	/**
 	 * ${1:Class comment}
 	 *
-	 * @category   Vsushkov
-	 * @package    Vsushkov_${2:Module}
+	 * @category   `substitute(substitute(expand("%:r"), 'app/code/local/\|app/code/community/', '', 'g'), '/.*', '', 'g')`
+	 * @package    `substitute(expand("%:r"), 'app/code/\(community\|local\)/\(\w*\)/\(\w*\)/.*', '\=submatch(2) . "_" . submatch(3)', 'g')`
 	 * @author     Valentin Sushkov <me@vsushkov.com>
 	 */
-	${3}
+	${2}
 # Canonical class name for Magento
 snippet	mclass
 	`substitute(substitute(expand("%:r"), 'app/code/local/\|app/code/community/', '', 'g'), '/', '_', 'g')`
