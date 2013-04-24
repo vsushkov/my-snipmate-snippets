@@ -25,7 +25,7 @@ snippet resource
 snippet block
 	Mage::app()->getLayout()->createBlock('${1:core/template}')${2};${3}
 snippet child
-	<?php echo $this->getChildHtml('${1:name}') ?>${2}
+	<?= $this->getChildHtml('${1:name}') ?>${2}
 snippet config
 	Mage::getStoreConfig('${1:config/path}');${2}
 snippet mdb
@@ -33,7 +33,7 @@ snippet mdb
 snippet acl
 	Mage::getSingleton('admin/session')->isAllowed('${1:acl/path}');${2}
 snippet tril
-	<?php echo $this->__('${1:Something}') ?>
+	<?= $this->__('${1:Something}') ?>
 snippet log
 	Mage::log($${1:data}, Zend_Log::DEBUG, '${2:filename}.log');${3}
 snippet file
