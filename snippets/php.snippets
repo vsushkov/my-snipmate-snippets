@@ -1,7 +1,5 @@
 snippet =
 	<?= ${1} ?>
-snippet phpil
-	<?php ${1} ?>
 snippet vifil
 	<?php if (${1:/* condition */}): ?>
 		{VISUAL}<?php endif; ?>
@@ -38,14 +36,12 @@ snippet log
 	Mage::log($${1:data}, Zend_Log::DEBUG, '${2:filename}.log');${3}
 snippet file
 	/**
-	 * vsushkov's extension for Magento
+	 * eCommeleon Ltd ecommerce software
 	 *
 	 * NOTICE OF LICENSE
 	 *
-	 * This source file is subject to the Academic Free License (AFL 3.0)
-	 * that is bundled with this package in the file LICENSE_AFL.txt.
-	 * It is also available through the world-wide-web at this URL:
-	 * http://opensource.org/licenses/afl-3.0.php
+	 * Unauthorized copying of this file, via any medium is strictly prohibited.
+	 * Proprietary and confidential.
 	 *
 	 * DISCLAIMER
 	 *
@@ -56,7 +52,6 @@ snippet file
 	 * @category   `substitute(substitute(expand("%:r"), 'app/code/local/\|app/code/community/', '', 'g'), '/.*', '', 'g')`
 	 * @package    `substitute(expand("%:r"), 'app/code/\(community\|local\)/\(\w*\)/\(\w*\)/.*', '\=submatch(2) . "_" . submatch(3)', 'g')`
 	 * @copyright  Copyright (c) `strftime('%Y')` Valentin Sushkov (http://www.vsushkov.com/)
-	 * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 	 */
 	${2}
 snippet doc_c

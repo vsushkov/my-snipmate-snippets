@@ -2,3 +2,14 @@ snippet cdata
 	//<![CDATA[
 	${1:}
 	//]]>
+
+snippet icon
+	<span>
+		<span aria-hidden="true" data-icon="&#x${1:00d7};" class="v-middle"></span>
+		<span class="screen-reader-text"><?= $this->__('${2:Close Cart}') ?></span>
+	</span>${0}
+
+snippet doml
+	document.observe("dom:loaded", function() {
+		${0}
+	});
