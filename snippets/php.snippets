@@ -62,7 +62,7 @@ snippet doc_c
 	 * @package    `substitute(expand("%:r"), 'app/code/\(community\|local\)/\(\w*\)/\(\w*\)/.*', '\=submatch(2) . "_" . submatch(3)', 'g')`
 	 * @author     Valentin Sushkov <me@vsushkov.com>
 	 */
-	${2}
+	${0}
 # Canonical class name for Magento
 snippet	mclass
 	`substitute(substitute(expand("%:r"), 'app/code/local/\|app/code/community/', '', 'g'), '/', '_', 'g')`
