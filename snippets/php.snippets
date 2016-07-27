@@ -51,7 +51,7 @@ snippet file
 	 *
 	 * @category   `substitute(substitute(expand("%:r"), 'app/code/local/\|app/code/community/', '', 'g'), '/.*', '', 'g')`
 	 * @package    `substitute(expand("%:r"), 'app/code/\(community\|local\)/\(\w*\)/\(\w*\)/.*', '\=submatch(2) . "_" . submatch(3)', 'g')`
-	 * @copyright  Copyright (c) `strftime('%Y')` Valentin Sushkov (http://www.vsushkov.com/)
+	 * @copyright  Copyright (c) `strftime('%Y')` DISPCOM Ltd (http://digitalspidercommerce.com/)
 	 */
 	${2}
 snippet doc_c
@@ -158,4 +158,5 @@ snippet install
 	}
 
 	$installer->endSetup();
-
+snippet init
+	require 'vendor/autoload.php'; require_once 'app/Mage.php'; Mage::app();
