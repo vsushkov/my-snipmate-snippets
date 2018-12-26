@@ -36,6 +36,37 @@ snippet xml
 	<?xml version="1.0" encoding="UTF-8"?>
 snippet tr
 	translate="${1:title}" module="${2:catalog}"
-# Magento block
 snippet block
 	<block type="${1:core/template}" name="${2:name}" as="${3:name}" template="${4:my/one.phtml}" />
+snippet module "M2 module declaration"
+	<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+		<module name="`substitute(expand("%:r"), 'app/code/\(\w*\)/\(\w*\)/.*', '\=submatch(1) . "_" . submatch(2)', 'g')`" setup_version="0.0.1">
+			<sequence>
+				<module name="Magento_Catalog"/>${1}
+			</sequence>
+		</module>
+	</config>
+snippet events "M2 events file header"
+	<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+		${1}
+	</config>
+snippet di "M2 di.xml"
+	<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+		${1}
+	</config>
+snippet pref "M2 di preference"
+	<preference for="${1}" type="${2}" />
+snippet type "M2 di type"
+	<type name="`substitute(expand("%:r"), 'app/code/\(\w*\)/\(\w*\)/.*', '\=submatch(1) . "\\" . submatch(2)', 'g')`${1}">
+		<arguments>
+			<argument name="${2:name}" xsi:type="${3:string}">${4}</argument>
+		</arguments>
+	</type>
+snippet plugin "M2 plugin"
+	<type name="${1:ObservedType}">
+		<plugin name="${2:pluginName}" type="${3:PluginClassName}" />
+	</type>
+snippet observer "M2 event"
+	<event name="${1:event_name}">
+		<observer name="${2:observer_name}" instance="${3:ObserverClass}" />
+	</event>

@@ -1,6 +1,6 @@
 snippet =
 	<?= ${1} ?>
-snippet vifil
+snippet ifil
 	<?php if (${1:/* condition */}): ?>
 		{VISUAL}<?php endif; ?>
 snippet zdb
@@ -63,88 +63,8 @@ snippet doc_c
 	 * @author     Valentin Sushkov <me@vsushkov.com>
 	 */
 	${0}
-# Canonical class name for Magento
 snippet	mclass
 	`substitute(substitute(expand("%:r"), 'app/code/local/\|app/code/community/', '', 'g'), '/', '_', 'g')`
-# PHPUnit
-snippet ae
-	$this->assertEquals(${1:'value'}, $${2:variable});${3}
-snippet an
-	$this->assertNull($${1:variable});${2}
-snippet ann
-	$this->assertNotNull($${1:variable});${2}
-snippet af
-	$this->assertFalse($${1:variable});${2}
-snippet at
-	$this->assertTrue($${1:variable});${2}
-snippet ahk
-	$this->assertArrayHasKey('${1:key}', $${2:array});${3}
-snippet anhk
-	$this->assertArrayNotHasKey('${1:key}', $${2:array});${3}
-snippet ai
-	$this->assertInstanceOf('${1:Class_Name}', $${2:object});${3}
-snippet lf
-	@loadFixture
-	* @doNotIndexAll
-snippet lsf
-	@loadSharedFixture
-	* @doNotIndexAll
-snippet skip
-	$this->markTestSkipped();
-snippet incomplete
-	$this->markTestIncomplete();
-snippet test
-	public function test${1:Something}()
-	{
-		${2:$this->markTestIncomplete();}${3}
-	}
-snippet exp
-	$this->expected()->getData()
-snippet ec
-	EcomDev_PHPUnit_Test_Case
-snippet acnhc
-	$this->assertConfigNodeHasChild('${1:path}', '${2:childName}');
-snippet mmock
-	$this->getModelMock('${1:path}', array('${2:method}'${3}));
-snippet rmock
-	$this->getResourceModelMock('${1:path}', array('${2:method}'${3}));
-snippet bmock
-	$this->getBlockMock('${1:path}', array('${2:method}'${3}));
-snippet hmock
-	$this->getHelperMock('${1:path}', array('${2:method}'${3}));
-snippet exp
-	expects($this->${1:once}())->method('${2:metod}')${3}
-snippet expw
-	expects($this->${1:once}())->method('${2:metod}')->with($this->${3:equalTo}(${4:value}));
-snippet expr
-	expects($this->${1:once}())->method('${2:metod}')->will($this->returnValue(${3:value}));
-snippet expwr
-	expects($this->${1:once}())->method('${2:metod}')
-	    ->with($this->${3:equalTo}(${4:value}))
-	    ->will($this->returnValue(${5:value}));
-snippet rbm
-	$this->replaceByMock('${1:model}', '${2:path}', $${3:var});
-snippet set
-	protected function setUp()
-	{
-		${1}
-	}
-snippet tear
-	protected function tearDown()
-	{
-		${1}
-	}
-snippet sbc
-	public static function setUpBeforeClass()
-	{
-		${1}
-	}
-snippet tdac
-	public static function tearDownAfterClass()
-	{
-		${1}
-	}
-
 snippet here
 	echo 'Hi, I am ' . __FILE__ . '(' . __LINE__ . ')'; echo '<br />';
 snippet install
@@ -160,3 +80,16 @@ snippet install
 	$installer->endSetup();
 snippet init
 	require 'vendor/autoload.php'; require_once 'app/Mage.php'; Mage::app();
+snippet reg "M2 module registration"
+	<?php
+	
+	\Magento\Framework\Component\ComponentRegistrar::register(
+		\Magento\Framework\Component\ComponentRegistrar::MODULE,
+		'`substitute(expand("%:r"), 'app/code/\(\w*\)/\(\w*\)/.*', '\=submatch(1) . "_" . submatch(2)', 'g')`',
+		__DIR__
+	);
+snippet nss "M2 namespace"
+	namespace `substitute(substitute(substitute(expand("%:r"), 'app/code/', '', 'g'), '/', '\', 'g'), '\\\w\+$', '', 'g')`;
+	
+	$1
+
