@@ -10,8 +10,8 @@ snippet zdd
 snippet who
 	Zend_Debug::dump(get_class($${1:this}));${2}
 snippet refm
-	$ref = new ReflectionMethod($${1:this}, '${2:methodName}');
-	Zend_Debug::dump($ref->getFileName(), __METHOD__ . '(' . __LINE__ . ')');${3}
+	\$ref = new \\ReflectionMethod(\$${1:this}, '${2:methodName}');
+	var_dump(\$ref->getFileName(), __METHOD__ . '(' . __LINE__ . ')');${3}
 snippet model
 	Mage::getModel('${1:module/path}')${2};${3}
 snippet single
@@ -82,14 +82,20 @@ snippet init
 	require 'vendor/autoload.php'; require_once 'app/Mage.php'; Mage::app();
 snippet reg "M2 module registration"
 	<?php
-	
+
 	\Magento\Framework\Component\ComponentRegistrar::register(
 		\Magento\Framework\Component\ComponentRegistrar::MODULE,
 		'`substitute(expand("%:r"), 'app/code/\(\w*\)/\(\w*\)/.*', '\=submatch(1) . "_" . submatch(2)', 'g')`',
 		__DIR__
 	);
 snippet nss "M2 namespace"
-	namespace `substitute(substitute(substitute(expand("%:r"), 'app/code/', '', 'g'), '/', '\', 'g'), '\\\w\+$', '', 'g')`;
-	
-	$1
+	namespace `substitute(substitute(substitute(expand("%:r"), 'app/code/', '', 'g'), '/', '\\', 'g'), '\\\w\+$', '', 'g')`;
 
+	$1
+snippet logger "M2 easy logger"
+	\$writer = new \\Zend\\Log\\Writer\\Stream(BP . '/var/log/vsushkov.log');
+	\$logger = new \\Zend\\Log\\Logger();
+	\$logger->addWriter(\$writer);
+	\$logger->debug(\$${1:variable});
+snippet trace "PHP print backtrace"
+	debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
