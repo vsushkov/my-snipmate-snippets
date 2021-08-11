@@ -89,7 +89,7 @@ snippet reg "M2 module registration"
 		__DIR__
 	);
 snippet nss "M2 namespace"
-	namespace `substitute(substitute(substitute(expand("%:r"), 'app/code/', '', 'g'), '/', '\\', 'g'), '\\\w\+$', '', 'g')`;
+	namespace `substitute(substitute(substitute(expand("%:r"), 'app/code/', '', 'g'), '/', '\\', 'g'), '\\\\\\w\\+$', '', 'g')`;
 
 	$1
 snippet logger "M2 easy logger"
