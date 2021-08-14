@@ -99,3 +99,10 @@ snippet logger "M2 easy logger"
 	\$logger->debug(\$${1:variable});
 snippet trace "PHP print backtrace"
 	debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+snippet afterp "Magento 2 after plugin"
+	public function after$1(\\Magento\\${2:Catalog\\Model\\Product} \$subject, \$result)
+	{
+		$0
+		return \$result;
+	}
+
